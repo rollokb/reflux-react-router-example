@@ -32,7 +32,7 @@ const App = React.createClass({
           </Navbar>
           <Panel>
             <Input  
-                   placeholder='Enter user or repo'
+                   placeholder='Enter user or repo eg: rollokb or spoike/refluxjs'
                    hasFeedback
                    ref='input'
                    type='text'

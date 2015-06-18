@@ -15,12 +15,15 @@ import { action as getUsers }  from '../actions/getUsers';
 import { strategies }          from '../actions/getUsers';
 
 
+function parseRepo(params) {
+  return params.login + '/' + params.repo
+}
 
 module.exports = React.createClass({
   mixins: [Reflux.listenTo(UserStore, 'onMakeUserRequestCompleted')],
   
   getStrategy() {
-      return strategies.usersByRepo(this.props.params.login + '/' + this.props.params.repo);
+      return strategies.usersByRepo(parseRepo(this.props.params));
   },
 
   getInitialState() {
@@ -43,6 +46,12 @@ module.exports = React.createClass({
     getUsers(this.getStrategy());
   },
   
+  componentWillReceiveProps(newProps) {
+    if (parseRepo(newProps.params) !== parseRepo(this.props.params)) {
+      getUsers(strategies.usersByRepo(parseRepo(newProps.params)));
+    }
+  },
+
   renderRows() {
     const users = this.state.users;
     const rows = [];
