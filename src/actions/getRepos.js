@@ -31,7 +31,7 @@ function reposByUser(user) {
     if (nextPageUrl) {
       return baseRequest(nextPageUrl, normalizeRepos);
     } else {
-      const url = "http://api.github.com/users/" + user + "/starred";
+      const url = "http://api.github.com/users/" + user + "/repos";
       return baseRequest(url, normalizeRepos);
     }
   };

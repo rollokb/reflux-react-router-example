@@ -59,7 +59,7 @@ module.exports = React.createClass({
 
     return (
       <div  className="container">
-        <h1>{this.props.params.login} - starred repos</h1>
+        <h1>{this.props.params.login} - user's repos</h1>
         {repos.map( (repo, idx)  => {
           return <Panel key={idx}>{repo.name}</Panel>;
         })}
