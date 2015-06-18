@@ -16,7 +16,7 @@ import { strategies }          from '../actions/getUsers';
 
 
 function parseRepo(params) {
-  return params.login + '/' + params.repo
+  return params.login + '/' + params.repo;
 }
 
 module.exports = React.createClass({
@@ -56,9 +56,8 @@ module.exports = React.createClass({
     const users = this.state.users;
     const rows = [];
 
-    for (var i=0; i<users.length; i=i+2) {
+    for (var i=0; i<users.length; i++) {
       const user1 = users[i];
-      const user2 = users[i+1];
 
       const row = (
          <Row className="users">
@@ -80,6 +79,7 @@ module.exports = React.createClass({
     const users = this.state.users;
     return (
       <Grid>
+        <h1>{this.props.params.repo} - stargazers</h1>
         {this.renderRows()}     
         <Button onClick={this.onLoadMore}>load more</Button>
       </Grid>
